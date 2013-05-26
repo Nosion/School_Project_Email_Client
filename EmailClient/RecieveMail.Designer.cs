@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecieveMail));
             this.ReciveMailbtn = new System.Windows.Forms.Button();
             this.msgcounglb = new System.Windows.Forms.Label();
             this.Subjectlsbx = new System.Windows.Forms.ListBox();
             this.msgBodytbx = new System.Windows.Forms.RichTextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.pbxWorking = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWorking)).BeginInit();
             this.SuspendLayout();
             // 
             // ReciveMailbtn
@@ -75,17 +78,30 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // pbxWorking
+            // 
+            this.pbxWorking.Image = ((System.Drawing.Image)(resources.GetObject("pbxWorking.Image")));
+            this.pbxWorking.Location = new System.Drawing.Point(552, 15);
+            this.pbxWorking.Name = "pbxWorking";
+            this.pbxWorking.Size = new System.Drawing.Size(21, 21);
+            this.pbxWorking.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxWorking.TabIndex = 6;
+            this.pbxWorking.TabStop = false;
+            this.pbxWorking.Visible = false;
+            // 
             // RecieveMail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 474);
+            this.Controls.Add(this.pbxWorking);
             this.Controls.Add(this.msgBodytbx);
             this.Controls.Add(this.Subjectlsbx);
             this.Controls.Add(this.msgcounglb);
             this.Controls.Add(this.ReciveMailbtn);
             this.Name = "RecieveMail";
             this.Text = "RecieveMail";
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWorking)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,5 +114,6 @@
         private System.Windows.Forms.ListBox Subjectlsbx;
         private System.Windows.Forms.RichTextBox msgBodytbx;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.PictureBox pbxWorking;
     }
 }

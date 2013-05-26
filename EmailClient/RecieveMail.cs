@@ -30,9 +30,25 @@ namespace EmailClient
         private void ReciveMailbtn_Click(object sender, EventArgs e)
         {   
             
-            //  FetchAllMessages();
-            backgroundWorker1.RunWorkerAsync();
-                       
+            //  FetchAllMessages(); BGWorker
+            if (backgroundWorker1.IsBusy){
+               //Do nothing
+            }
+            else{
+                backgroundWorker1.RunWorkerAsync();
+            }
+
+
+            //Picture indicates when reciving POP mails.
+            if (backgroundWorker1.IsBusy == false)
+            {
+                pbxWorking.Visible = false;
+            }
+            //else
+            //    pbxWorking.Visible = false;
+
+
+
             
             msgcounglb.Text = Convert.ToString(list.Count);
 
@@ -92,7 +108,8 @@ namespace EmailClient
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            list = fetchAllMessages();
+            
+            list = fetchAllMessages();  
         }
         
     }
