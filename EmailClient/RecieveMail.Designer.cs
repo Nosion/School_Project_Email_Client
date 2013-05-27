@@ -33,8 +33,9 @@
             this.msgcounglb = new System.Windows.Forms.Label();
             this.Subjectlsbx = new System.Windows.Forms.ListBox();
             this.msgBodytbx = new System.Windows.Forms.RichTextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.worker = new System.ComponentModel.BackgroundWorker();
             this.pbxWorking = new System.Windows.Forms.PictureBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pbxWorking)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,15 +69,14 @@
             // 
             // msgBodytbx
             // 
+            this.msgBodytbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.msgBodytbx.Location = new System.Drawing.Point(168, 42);
             this.msgBodytbx.Name = "msgBodytbx";
             this.msgBodytbx.Size = new System.Drawing.Size(415, 368);
             this.msgBodytbx.TabIndex = 5;
             this.msgBodytbx.Text = "";
-            // 
-            // backgroundWorker1
-            // 
-           // this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // pbxWorking
             // 
@@ -89,11 +89,19 @@
             this.pbxWorking.TabStop = false;
             this.pbxWorking.Visible = false;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(61, 433);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(409, 14);
+            this.progressBar1.TabIndex = 7;
+            // 
             // RecieveMail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 474);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.pbxWorking);
             this.Controls.Add(this.msgBodytbx);
             this.Controls.Add(this.Subjectlsbx);
@@ -113,7 +121,8 @@
         private System.Windows.Forms.Label msgcounglb;
         private System.Windows.Forms.ListBox Subjectlsbx;
         private System.Windows.Forms.RichTextBox msgBodytbx;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker worker;
         private System.Windows.Forms.PictureBox pbxWorking;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

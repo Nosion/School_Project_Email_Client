@@ -13,6 +13,7 @@ using OpenPop.Mime.Decode;
 using OpenPop.Mime.Header;
 using OpenPop.Pop3;
 using System.IO;
+using System.Data.SQLite;
 
 namespace EmailClient
 {
@@ -25,18 +26,21 @@ namespace EmailClient
             InitializeComponent();
 
             list = new List<OpenPop.Mime.Message>();
+
+            worker.WorkerReportsProgress = true;
             
-            backgroundWorker1.DoWork += new DoWorkEventHandler(fetchAllMessages);
-            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
+            worker.DoWork += new DoWorkEventHandler(fetchAllMessages);
+            worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
+            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
         }
 
         private void ReciveMailbtn_Click(object sender, EventArgs e)
         {
             //  FetchAllMessages(); BGWorker
-            if (!backgroundWorker1.IsBusy)
+            if (!worker.IsBusy)
             {
                 pbxWorking.Visible = true;
-                backgroundWorker1.RunWorkerAsync();
+                worker.RunWorkerAsync();
             }
         }
 
@@ -56,6 +60,7 @@ namespace EmailClient
 
         private static void fetchAllMessages(object sender, DoWorkEventArgs e)
         {
+            int percentComplete;
             // The client disconnects from the server when being disposed
             using (Pop3Client client = new Pop3Client())
             {
@@ -78,6 +83,8 @@ namespace EmailClient
                 for (int i = messageCount; i > 0; i--)
                 {
                     allMessages.Add(client.GetMessage(i));
+                    percentComplete = Convert.ToInt16((Convert.ToDouble(allMessages.Count) / Convert.ToDouble(messageCount)) * 100);
+                    (sender as BackgroundWorker).ReportProgress(percentComplete);
                 }
                 // Now return the fetched messages to e
                 e.Result = allMessages;
@@ -95,8 +102,11 @@ namespace EmailClient
             {
                 Subjectlsbx.Items.Add(message.Headers.Subject.ToString());//OpenPop.Mime.Message mail
             }
-        
         }
-        
+
+        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
     }
 }
