@@ -23,38 +23,20 @@ namespace EmailClient
         public RecieveMail()
         {
             InitializeComponent();
+
             list = new List<OpenPop.Mime.Message>();
             
+            backgroundWorker1.DoWork += new DoWorkEventHandler(fetchAllMessages);
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
         }
 
         private void ReciveMailbtn_Click(object sender, EventArgs e)
-        {   
-            
+        {
             //  FetchAllMessages(); BGWorker
-            if (backgroundWorker1.IsBusy){
-               //Do nothing
-            }
-            else{
+            if (!backgroundWorker1.IsBusy)
+            {
+                pbxWorking.Visible = true;
                 backgroundWorker1.RunWorkerAsync();
-            }
-
-
-            //Picture indicates when reciving POP mails.
-            if (backgroundWorker1.IsBusy == false)
-            {
-                pbxWorking.Visible = false;
-            }
-            //else
-            //    pbxWorking.Visible = false;
-
-
-
-            
-            msgcounglb.Text = Convert.ToString(list.Count);
-
-            foreach (OpenPop.Mime.Message message in list)
-            {
-                Subjectlsbx.Items.Add(message.Headers.Subject.ToString());//OpenPop.Mime.Message mail
             }
         }
 
@@ -68,14 +50,11 @@ namespace EmailClient
             else
             {
                 OpenPop.Mime.MessagePart plainText = list[selectedItem].FindFirstPlainTextVersion();
-                msgBodytbx.Text = plainText.GetBodyAsText();
-               
-//                msgBodytbx.Text = "Multi-part message, you need to write somew code to handle this";
+                msgBodytbx.Text = plainText.GetBodyAsText();              
             }
         }
 
-
-        private static List<OpenPop.Mime.Message> fetchAllMessages()
+        private static void fetchAllMessages(object sender, DoWorkEventArgs e)
         {
             // The client disconnects from the server when being disposed
             using (Pop3Client client = new Pop3Client())
@@ -100,16 +79,23 @@ namespace EmailClient
                 {
                     allMessages.Add(client.GetMessage(i));
                 }
-
-                // Now return the fetched messages
-                 return allMessages;
+                // Now return the fetched messages to e
+                e.Result = allMessages;
             }
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void OnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
-            list = fetchAllMessages();  
+            pbxWorking.Visible = false;
+            list = (List<OpenPop.Mime.Message>)e.Result;
+
+            msgcounglb.Text = Convert.ToString(list.Count);
+
+            foreach (OpenPop.Mime.Message message in list)
+            {
+                Subjectlsbx.Items.Add(message.Headers.Subject.ToString());//OpenPop.Mime.Message mail
+            }
+        
         }
         
     }
