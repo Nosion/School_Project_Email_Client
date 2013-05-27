@@ -25,6 +25,19 @@ namespace EmailClient
         {
             InitializeComponent();
 
+        http://blog.tigrangasparian.com/2012/02/09/getting-started-with-sqlite-in-c-part-one/
+            //Creating DB
+            SQLiteConnection.CreateFile("db.sqlite");
+
+            //Connection object
+            SQLiteConnection dbConnection;
+            
+            dbConnection
+
+
+
+
+
             list = new List<OpenPop.Mime.Message>();
 
             worker.WorkerReportsProgress = true;
