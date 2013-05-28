@@ -25,18 +25,41 @@ namespace EmailClient
         {
             InitializeComponent();
 
-        http://blog.tigrangasparian.com/2012/02/09/getting-started-with-sqlite-in-c-part-one/
-            //Creating DB
-            SQLiteConnection.CreateFile("db.sqlite");
+#region SQLConnection & DB creation             
+                try{
+                    string dbConnString = @"Data Source=db.sqlite; Version=3;"; // Creating the connection string with filepath to the DB
+                    SQLiteConnection sqliteCon = new SQLiteConnection(dbConnString); // Creating new connection string instance.
+ 
+                    sqliteCon.Open(); // Open database
 
-            //Connection object
-            SQLiteConnection dbConnection;
-            
-            dbConnection
+                    
+                        // Defining the SQL Create table string 
+                        string crtMessagetblSQL = "CREATE TABLE IF NOT EXISTS [Messages] (" + 
+                            "[msgID] TEXT NOT NULL PRIMARY KEY," + 
+                            "[msgSender] TEXT NULL," +
+                            "[msgSubject] TEXT NULL," + 
+                            "[msgBody] TEXT NULL" +
+                            ")";
 
+                        using (SQLiteTransaction sqlTrans = sqliteCon.BeginTransaction())
+                        {
+                            SQLiteCommand crtComm = new SQLiteCommand(crtMessagetblSQL, sqliteCon);
 
+                            crtComm.ExecuteNonQuery();
+                            crtComm.Dispose();
 
+                            sqlTrans.Commit(); // Commit changes into the DB
+                         } // End using
 
+                     sqliteCon.Close(); // Closes DB connection
+
+                    } // End try
+
+                    catch (SQLiteException e)
+                    {
+                        MessageBox.Show(e.ToString());
+                    } // End catch
+#endregion  //hej//test
 
             list = new List<OpenPop.Mime.Message>();
 
@@ -45,7 +68,7 @@ namespace EmailClient
             worker.DoWork += new DoWorkEventHandler(fetchAllMessages);
             worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
-        }
+        } // RecieveMail end
 
         private void ReciveMailbtn_Click(object sender, EventArgs e)
         {
@@ -57,6 +80,7 @@ namespace EmailClient
             }
         }
 
+        //Getting the different messageparts .. more on this http://stackoverflow.com/questions/10601913/openpop-net-get-actual-message-text
         private void Subjectlsbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedItem = Subjectlsbx.SelectedIndex;
@@ -83,6 +107,7 @@ namespace EmailClient
                 // Authenticate ourselves towards the server
                 client.Authenticate("dumdum13377@gmail.com", "Grus61mHg");
 
+                
                 // Get the number of messages in the inbox
                 int messageCount = client.GetMessageCount();
 
