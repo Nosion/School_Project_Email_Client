@@ -19,7 +19,7 @@ namespace EmailClient
 {
     public partial class RecieveMail : Form
     {
-        List<OpenPop.Mime.Message> list;
+        List<OpenPop.Mime.Message> list;       
         
         public RecieveMail()
         {
@@ -46,7 +46,8 @@ namespace EmailClient
                             SQLiteCommand crtComm = new SQLiteCommand(crtMessagetblSQL, sqliteCon);
 
                             crtComm.ExecuteNonQuery();
-                            crtComm.Dispose();
+
+                         //   crtComm.Dispose();
 
                             sqlTrans.Commit(); // Commit changes into the DB
                          } // End using
@@ -59,7 +60,7 @@ namespace EmailClient
                     {
                         MessageBox.Show(e.ToString());
                     } // End catch
-#endregion  //hej//test
+#endregion
 
             list = new List<OpenPop.Mime.Message>();
 
@@ -112,7 +113,7 @@ namespace EmailClient
                 int messageCount = client.GetMessageCount();
 
                 // We want to download all messages
-                List<OpenPop.Mime.Message> allMessages = new List<OpenPop.Mime.Message>(messageCount);
+                List<OpenPop.Mime.Message> allMessages = new List<OpenPop.Mime.Message>();
 
                 // Messages are numbered in the interval: [1, messageCount]
                 // Ergo: message numbers are 1-based.
@@ -136,9 +137,56 @@ namespace EmailClient
 
             msgcounglb.Text = Convert.ToString(list.Count);
 
+#region Insert messages into db
+            string dbConnString = @"Data Source=db.sqlite; Version=3;"; // Creating the connection string with filepath to the DB
+            SQLiteConnection sqliteCon = new SQLiteConnection(dbConnString); // Creating new connection string instance.
+            sqliteCon.Open(); // Open database
+
+            SQLiteTransaction sqlTrans;
+
+
+            SQLiteCommand comInsert = new SQLiteCommand("INSERT OR IGNORE INTO messages (msgID, msgSender, msgSubject, msgBody) VALUES (@msgID, @msgSender, @msgSubject, @msgBody)", sqliteCon);
+
             foreach (OpenPop.Mime.Message message in list)
             {
-                Subjectlsbx.Items.Add(message.Headers.Subject.ToString());//OpenPop.Mime.Message mail
+                if (message.Headers.MessageId != null)
+                {
+                    comInsert.Parameters.AddWithValue("@msgID", message.Headers.MessageId);
+                    comInsert.Parameters.AddWithValue("@msgSender", message.Headers.Sender);
+                    comInsert.Parameters.AddWithValue("@msgSubject", message.Headers.Subject);
+                    if (!message.MessagePart.IsMultiPart)
+                    {
+                        comInsert.Parameters.AddWithValue("@msgBody", message.MessagePart.GetBodyAsText());
+                    }
+                    else
+                    {
+                        OpenPop.Mime.MessagePart plaintext = message.FindFirstPlainTextVersion();
+                        comInsert.Parameters.AddWithValue("@msgBody", plaintext.GetBodyAsText());
+                    }
+                    //sqlTrans = sqliteCon.BeginTransaction();
+                    //int result = comInsert.ExecuteNonQuery();
+                    //sqlTrans.Commit();
+
+
+
+                    sqlTrans = sqliteCon.BeginTransaction();
+                    int result = comInsert.ExecuteNonQuery();
+                    
+                    sqlTrans.Commit(); // Commit changes into the DB
+
+
+
+
+
+                    Subjectlsbx.Items.Add(message.Headers.Subject.ToString());
+                }
+
+               // comInsert.Dispose();
+                sqliteCon.Close();
+#endregion
+
+           
+                //Subjectlsbx.Items.Add(message.Headers.Subject.ToString());//OpenPop.Mime.Message mail
             }
         }
 
