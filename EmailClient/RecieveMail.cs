@@ -84,7 +84,7 @@ namespace EmailClient
         //Getting the different messageparts .. more on this http://stackoverflow.com/questions/10601913/openpop-net-get-actual-message-text
         private void Subjectlsbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedItem = Subjectlsbx.SelectedIndex;
+            int selectedItem = subjectlsbx.SelectedIndex;
             if (!list[selectedItem].MessagePart.IsMultiPart)
             {
                 msgBodytbx.Text = list[selectedItem].MessagePart.GetBodyAsText();
@@ -103,10 +103,10 @@ namespace EmailClient
             using (Pop3Client client = new Pop3Client())
             {
                 // Connect to the server
-                client.Connect("pop.gmail.com", 995, true);
+                client.Connect("pop.myopera.com", 995, true);
 
                 // Authenticate ourselves towards the server
-                client.Authenticate("dumdum13377@gmail.com", "Grus61mHg");
+                client.Authenticate("jakob87@myopera.com", "HejHej");
 
                 
                 // Get the number of messages in the inbox
@@ -138,6 +138,7 @@ namespace EmailClient
             msgcounglb.Text = Convert.ToString(list.Count);
 
 #region Insert messages into db
+
             string dbConnString = @"Data Source=db.sqlite; Version=3;"; // Creating the connection string with filepath to the DB
             SQLiteConnection sqliteCon = new SQLiteConnection(dbConnString); // Creating new connection string instance.
             sqliteCon.Open(); // Open database
@@ -168,26 +169,20 @@ namespace EmailClient
                     //sqlTrans.Commit();
 
 
-
-                    sqlTrans = sqliteCon.BeginTransaction();
-                    int result = comInsert.ExecuteNonQuery();
+                   sqlTrans = sqliteCon.BeginTransaction();
+                   int result = comInsert.ExecuteNonQuery();
                     
-                    sqlTrans.Commit(); // Commit changes into the DB
+                   sqlTrans.Commit(); // Commit changes into the DB
 
 
+                   subjectlsbx.Items.Add(message.Headers.Subject.ToString());
+                } // End if
 
+            } // End foreach
 
-
-                    Subjectlsbx.Items.Add(message.Headers.Subject.ToString());
-                }
-
-               // comInsert.Dispose();
-                sqliteCon.Close();
+            comInsert.Dispose();
+            sqliteCon.Close();
 #endregion
-
-           
-                //Subjectlsbx.Items.Add(message.Headers.Subject.ToString());//OpenPop.Mime.Message mail
-            }
         }
 
         private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)

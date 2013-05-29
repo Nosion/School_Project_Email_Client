@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecieveMail));
             this.ReciveMailbtn = new System.Windows.Forms.Button();
             this.msgcounglb = new System.Windows.Forms.Label();
-            this.Subjectlsbx = new System.Windows.Forms.ListBox();
+            this.subjectlsbx = new System.Windows.Forms.ListBox();
             this.msgBodytbx = new System.Windows.Forms.RichTextBox();
             this.worker = new System.ComponentModel.BackgroundWorker();
             this.pbxWorking = new System.Windows.Forms.PictureBox();
@@ -58,14 +58,14 @@
             this.msgcounglb.TabIndex = 3;
             this.msgcounglb.Text = "N/A";
             // 
-            // Subjectlsbx
+            // subjectlsbx
             // 
-            this.Subjectlsbx.FormattingEnabled = true;
-            this.Subjectlsbx.Location = new System.Drawing.Point(12, 42);
-            this.Subjectlsbx.Name = "Subjectlsbx";
-            this.Subjectlsbx.Size = new System.Drawing.Size(150, 368);
-            this.Subjectlsbx.TabIndex = 4;
-            this.Subjectlsbx.SelectedIndexChanged += new System.EventHandler(this.Subjectlsbx_SelectedIndexChanged);
+            this.subjectlsbx.FormattingEnabled = true;
+            this.subjectlsbx.Location = new System.Drawing.Point(12, 42);
+            this.subjectlsbx.Name = "subjectlsbx";
+            this.subjectlsbx.Size = new System.Drawing.Size(150, 368);
+            this.subjectlsbx.TabIndex = 4;
+            this.subjectlsbx.SelectedIndexChanged += new System.EventHandler(this.Subjectlsbx_SelectedIndexChanged);
             // 
             // msgBodytbx
             // 
@@ -104,7 +104,7 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.pbxWorking);
             this.Controls.Add(this.msgBodytbx);
-            this.Controls.Add(this.Subjectlsbx);
+            this.Controls.Add(this.subjectlsbx);
             this.Controls.Add(this.msgcounglb);
             this.Controls.Add(this.ReciveMailbtn);
             this.Name = "RecieveMail";
@@ -119,7 +119,7 @@
 
         private System.Windows.Forms.Button ReciveMailbtn;
         private System.Windows.Forms.Label msgcounglb;
-        private System.Windows.Forms.ListBox Subjectlsbx;
+        private System.Windows.Forms.ListBox subjectlsbx;
         private System.Windows.Forms.RichTextBox msgBodytbx;
         private System.ComponentModel.BackgroundWorker worker;
         private System.Windows.Forms.PictureBox pbxWorking;

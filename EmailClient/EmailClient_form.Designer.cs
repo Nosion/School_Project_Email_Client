@@ -28,14 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmailClient_form));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newMailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.recievedMailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.pbxWorking = new System.Windows.Forms.PictureBox();
+            this.msgBodytbx = new System.Windows.Forms.RichTextBox();
+            this.subjectlsbx = new System.Windows.Forms.ListBox();
+            this.msgcounglb = new System.Windows.Forms.Label();
+            this.ReciveMailbtn = new System.Windows.Forms.Button();
+            this.worker = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWorking)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -58,44 +65,102 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
-            // exitToolStripMenuItem1
-            // 
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem1.Text = "Exit";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
-            // 
             // newMailToolStripMenuItem
             // 
             this.newMailToolStripMenuItem.Name = "newMailToolStripMenuItem";
-            this.newMailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newMailToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.newMailToolStripMenuItem.Text = "New Mail";
             this.newMailToolStripMenuItem.Click += new System.EventHandler(this.newMailToolStripMenuItem_Click);
-            // 
-            // fileSystemWatcher1
-            // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // recievedMailToolStripMenuItem
             // 
             this.recievedMailToolStripMenuItem.Name = "recievedMailToolStripMenuItem";
-            this.recievedMailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recievedMailToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.recievedMailToolStripMenuItem.Text = "Recieved Mail";
             this.recievedMailToolStripMenuItem.Click += new System.EventHandler(this.recievedMailToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(203, 480);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(409, 14);
+            this.progressBar1.TabIndex = 13;
+            // 
+            // pbxWorking
+            // 
+            this.pbxWorking.Image = ((System.Drawing.Image)(resources.GetObject("pbxWorking.Image")));
+            this.pbxWorking.Location = new System.Drawing.Point(694, 62);
+            this.pbxWorking.Name = "pbxWorking";
+            this.pbxWorking.Size = new System.Drawing.Size(21, 21);
+            this.pbxWorking.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxWorking.TabIndex = 12;
+            this.pbxWorking.TabStop = false;
+            this.pbxWorking.Visible = false;
+            // 
+            // msgBodytbx
+            // 
+            this.msgBodytbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.msgBodytbx.Location = new System.Drawing.Point(310, 89);
+            this.msgBodytbx.Name = "msgBodytbx";
+            this.msgBodytbx.Size = new System.Drawing.Size(415, 368);
+            this.msgBodytbx.TabIndex = 11;
+            this.msgBodytbx.Text = "";
+            // 
+            // subjectlsbx
+            // 
+            this.subjectlsbx.FormattingEnabled = true;
+            this.subjectlsbx.Location = new System.Drawing.Point(154, 89);
+            this.subjectlsbx.Name = "subjectlsbx";
+            this.subjectlsbx.Size = new System.Drawing.Size(150, 368);
+            this.subjectlsbx.TabIndex = 10;
+            this.subjectlsbx.SelectedIndexChanged += new System.EventHandler(this.subjectlsbx_SelectedIndexChanged_1);
+            // 
+            // msgcounglb
+            // 
+            this.msgcounglb.AutoSize = true;
+            this.msgcounglb.Location = new System.Drawing.Point(661, 70);
+            this.msgcounglb.Name = "msgcounglb";
+            this.msgcounglb.Size = new System.Drawing.Size(27, 13);
+            this.msgcounglb.TabIndex = 9;
+            this.msgcounglb.Text = "N/A";
+            // 
+            // ReciveMailbtn
+            // 
+            this.ReciveMailbtn.Location = new System.Drawing.Point(154, 60);
+            this.ReciveMailbtn.Name = "ReciveMailbtn";
+            this.ReciveMailbtn.Size = new System.Drawing.Size(75, 23);
+            this.ReciveMailbtn.TabIndex = 8;
+            this.ReciveMailbtn.Text = "Recive";
+            this.ReciveMailbtn.UseVisualStyleBackColor = true;
+            this.ReciveMailbtn.Click += new System.EventHandler(this.ReciveMailbtn_Click_1);
             // 
             // EmailClient_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 626);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.pbxWorking);
+            this.Controls.Add(this.msgBodytbx);
+            this.Controls.Add(this.subjectlsbx);
+            this.Controls.Add(this.msgcounglb);
+            this.Controls.Add(this.ReciveMailbtn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "EmailClient_form";
             this.Text = "BUG Email Client";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWorking)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,8 +172,14 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem newMailToolStripMenuItem;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.ToolStripMenuItem recievedMailToolStripMenuItem;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.PictureBox pbxWorking;
+        private System.Windows.Forms.RichTextBox msgBodytbx;
+        private System.Windows.Forms.ListBox subjectlsbx;
+        private System.Windows.Forms.Label msgcounglb;
+        private System.Windows.Forms.Button ReciveMailbtn;
+        private System.ComponentModel.BackgroundWorker worker;
 
     }
 }
