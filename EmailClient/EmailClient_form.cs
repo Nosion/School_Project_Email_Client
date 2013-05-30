@@ -17,7 +17,7 @@ namespace EmailClient
     public partial class EmailClient_form : Form
     {
         List<OpenPop.Mime.Message> list;
-
+        List<Msg> dbmsg = new List<Msg>();
 
         public class Msg
         {
@@ -31,15 +31,16 @@ namespace EmailClient
                     MsgID, MsgSender, MsgSubject, MsgBody);
             }
         }
+        public SQLiteConnection sqliteCon;
 
         public EmailClient_form()
         {
             InitializeComponent();
 
 #region SQLConnection & DB creation             
-                try{
-                    string dbConnString = @"Data Source=db.sqlite; Version=3;"; // Creating the connection string with filepath to the DB
-                    SQLiteConnection sqliteCon = new SQLiteConnection(dbConnString); // Creating new connection string instance.
+            string dbConnString = @"Data Source=db.sqlite; Version=3;"; // Creating the connection string with filepath to the DB
+            sqliteCon = new SQLiteConnection(dbConnString); // Creating new connection string instance.
+            try{
  
                     sqliteCon.Open(); // Open database
 
@@ -71,6 +72,17 @@ namespace EmailClient
                     {
                         MessageBox.Show(e.ToString());
                     } // End catch
+
+
+///
+
+
+
+
+
+
+
+
 #endregion
 
             list = new List<OpenPop.Mime.Message>();
@@ -109,7 +121,34 @@ namespace EmailClient
         #endregion
 
 
+        private void listInsert()
+        {
+            SQLiteCommand cmdRead = new SQLiteCommand("SELECT * FROM Messages", sqliteCon);
 
+            sqliteCon.Open(); // Open database
+            SQLiteDataReader reader = cmdRead.ExecuteReader();
+
+            try
+            {
+                while (reader.Read())
+                {
+                    string msgID = reader.GetString(0);
+                    string msgSender = reader.GetString(1);
+                    string msgSubject = reader.GetString(2);
+                    string msgBody = reader.GetString(3);
+                    dbmsg.Add(new Msg() { MsgID = msgID, MsgSender = msgSender, MsgSubject = msgSubject, MsgBody = msgBody });
+                }
+            }
+            finally
+            {
+                foreach (Msg msg in dbmsg)
+                {
+                    subjectlsbx.Items.Add(msg.MsgSubject);
+                }
+                reader.Close(); // Close connection
+            }
+            sqliteCon.Close();
+        }
 
 
         private void ReciveMailbtn_Click_1(object sender, EventArgs e)
@@ -127,7 +166,8 @@ namespace EmailClient
         private void subjectlsbx_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             int selectedItem = subjectlsbx.SelectedIndex;
-            if (!list[selectedItem].MessagePart.IsMultiPart)
+            msgBodytbx.Text = dbmsg[selectedItem].MsgBody; // Shows the message body when choosing a subject from subjectlsbx
+            /*if (!list.ToArray()[selectedItem].MessagePart.IsMultiPart)
             {
                 msgBodytbx.Text = list[selectedItem].MessagePart.GetBodyAsText();
             }
@@ -135,7 +175,7 @@ namespace EmailClient
             {
                 OpenPop.Mime.MessagePart plainText = list[selectedItem].FindFirstPlainTextVersion();
                 msgBodytbx.Text = plainText.GetBodyAsText();
-            }
+            }*/
         }
 
 
@@ -150,8 +190,7 @@ namespace EmailClient
 
                 // Authenticate ourselves towards the server /HejHej
                 client.Authenticate("dumdum13377", "Grus61mHg");
-
-                
+                                
                 // Get the number of messages in the inbox
                 int messageCount = client.GetMessageCount();
 
@@ -188,7 +227,6 @@ namespace EmailClient
 
             SQLiteTransaction sqlTrans;
 
-
             SQLiteCommand comInsert = new SQLiteCommand("INSERT OR IGNORE INTO messages (msgID, msgSender, msgSubject, msgBody) VALUES (@msgID, @msgSender, @msgSubject, @msgBody)", sqliteCon);
 
             foreach (OpenPop.Mime.Message message in list)
@@ -213,54 +251,13 @@ namespace EmailClient
 
                     sqlTrans.Commit(); // Commit changes into the DB
 
-
-   //                 subjectlsbx.Items.Add(message.Headers.Subject.ToString());
                 } // End if
 
             } // End foreach
 
             comInsert.Dispose();
 
-            //Trying to get data from DB into our form...
-
-
-
-
-
-            List<Msg> dbmsg = new List<Msg>();
-            SQLiteCommand cmdRead = new SQLiteCommand("SELECT * FROM Messages", sqliteCon);
-            SQLiteDataReader reader = cmdRead.ExecuteReader();
-            //try
-            //{
-                while (reader.Read())
-                {
-                    string msgID = reader.GetString(0);
-                    string msgSender = reader.GetString(1);
-                    string msgSubject = reader.GetString(2);
-                    string msgBody = reader.GetString(3);
-                    dbmsg.Add(new Msg() { MsgID = msgID, MsgSender = msgSender, MsgSubject = msgSubject, MsgBody = msgBody });
-                }
-            //}
-                foreach (Msg msg in dbmsg)
-                {
-                    subjectlsbx.Items.Add(msg.MsgSubject);
-                }
-            
-            //finally
-            //{
-            //    reader.Close(); // Close connection
-            //}
-
-            
-
-
-            //string readMsg = "select * from Messages";
-            //SQLiteCommand comRead = new SQLiteCommand(readMsg, sqliteCon);
-            //SQLiteDataReader reader = comRead.ExecuteReader();
-            //while (reader.Read())
-
-
-
+            listInsert();
 
             sqliteCon.Close();
             #endregion

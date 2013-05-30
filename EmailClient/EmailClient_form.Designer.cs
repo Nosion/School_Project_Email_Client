@@ -62,33 +62,33 @@
             this.recievedMailToolStripMenuItem,
             this.exitToolStripMenuItem1});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
             // newMailToolStripMenuItem
             // 
             this.newMailToolStripMenuItem.Name = "newMailToolStripMenuItem";
-            this.newMailToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.newMailToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.newMailToolStripMenuItem.Text = "New Mail";
             this.newMailToolStripMenuItem.Click += new System.EventHandler(this.newMailToolStripMenuItem_Click);
             // 
             // recievedMailToolStripMenuItem
             // 
             this.recievedMailToolStripMenuItem.Name = "recievedMailToolStripMenuItem";
-            this.recievedMailToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.recievedMailToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.recievedMailToolStripMenuItem.Text = "Recieved Mail";
             this.recievedMailToolStripMenuItem.Click += new System.EventHandler(this.recievedMailToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(203, 480);
+            this.progressBar1.Location = new System.Drawing.Point(0, 610);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(409, 14);
             this.progressBar1.TabIndex = 13;
@@ -96,7 +96,7 @@
             // pbxWorking
             // 
             this.pbxWorking.Image = ((System.Drawing.Image)(resources.GetObject("pbxWorking.Image")));
-            this.pbxWorking.Location = new System.Drawing.Point(694, 62);
+            this.pbxWorking.Location = new System.Drawing.Point(86, 583);
             this.pbxWorking.Name = "pbxWorking";
             this.pbxWorking.Size = new System.Drawing.Size(21, 21);
             this.pbxWorking.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -109,25 +109,25 @@
             this.msgBodytbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.msgBodytbx.Location = new System.Drawing.Point(310, 89);
+            this.msgBodytbx.Location = new System.Drawing.Point(333, 40);
             this.msgBodytbx.Name = "msgBodytbx";
-            this.msgBodytbx.Size = new System.Drawing.Size(415, 368);
+            this.msgBodytbx.Size = new System.Drawing.Size(526, 524);
             this.msgBodytbx.TabIndex = 11;
             this.msgBodytbx.Text = "";
             // 
             // subjectlsbx
             // 
             this.subjectlsbx.FormattingEnabled = true;
-            this.subjectlsbx.Location = new System.Drawing.Point(154, 89);
+            this.subjectlsbx.Location = new System.Drawing.Point(166, 40);
             this.subjectlsbx.Name = "subjectlsbx";
-            this.subjectlsbx.Size = new System.Drawing.Size(150, 368);
+            this.subjectlsbx.Size = new System.Drawing.Size(150, 524);
             this.subjectlsbx.TabIndex = 10;
             this.subjectlsbx.SelectedIndexChanged += new System.EventHandler(this.subjectlsbx_SelectedIndexChanged_1);
             // 
             // msgcounglb
             // 
             this.msgcounglb.AutoSize = true;
-            this.msgcounglb.Location = new System.Drawing.Point(661, 70);
+            this.msgcounglb.Location = new System.Drawing.Point(12, 591);
             this.msgcounglb.Name = "msgcounglb";
             this.msgcounglb.Size = new System.Drawing.Size(27, 13);
             this.msgcounglb.TabIndex = 9;
@@ -135,7 +135,7 @@
             // 
             // ReciveMailbtn
             // 
-            this.ReciveMailbtn.Location = new System.Drawing.Point(154, 60);
+            this.ReciveMailbtn.Location = new System.Drawing.Point(12, 27);
             this.ReciveMailbtn.Name = "ReciveMailbtn";
             this.ReciveMailbtn.Size = new System.Drawing.Size(75, 23);
             this.ReciveMailbtn.TabIndex = 8;
