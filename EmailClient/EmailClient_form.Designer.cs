@@ -32,7 +32,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recievedMailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.pbxWorking = new System.Windows.Forms.PictureBox();
@@ -59,7 +58,6 @@
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newMailToolStripMenuItem,
-            this.recievedMailToolStripMenuItem,
             this.exitToolStripMenuItem1});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
@@ -68,21 +66,14 @@
             // newMailToolStripMenuItem
             // 
             this.newMailToolStripMenuItem.Name = "newMailToolStripMenuItem";
-            this.newMailToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.newMailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newMailToolStripMenuItem.Text = "New Mail";
             this.newMailToolStripMenuItem.Click += new System.EventHandler(this.newMailToolStripMenuItem_Click);
-            // 
-            // recievedMailToolStripMenuItem
-            // 
-            this.recievedMailToolStripMenuItem.Name = "recievedMailToolStripMenuItem";
-            this.recievedMailToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.recievedMailToolStripMenuItem.Text = "Recieved Mail";
-            this.recievedMailToolStripMenuItem.Click += new System.EventHandler(this.recievedMailToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -172,7 +163,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem newMailToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recievedMailToolStripMenuItem;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.PictureBox pbxWorking;
         private System.Windows.Forms.RichTextBox msgBodytbx;

@@ -104,12 +104,6 @@ namespace EmailClient
 			NewMail _NewMail = new NewMail();
 			_NewMail.ShowDialog();
 		}
-
-		private void recievedMailToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			RecieveMail _RecieveMail = new RecieveMail();
-			_RecieveMail.ShowDialog();
-		}
 		#endregion
 
 
