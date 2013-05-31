@@ -12,12 +12,15 @@ using System.Data.SQLite;
 using OpenPop.Pop3;
 using System.Diagnostics;
 
+
 namespace EmailClient
 {
 	public partial class EmailClient_form : Form
 	{
 		List<OpenPop.Mime.Message> list;
 		List<Msg> dbmsg = new List<Msg>();
+        SqlHandler sqlHandler = new SqlHandler();
+        SQLiteConnection sqliteCon;
 
 		public class Msg
 		{
@@ -31,7 +34,7 @@ namespace EmailClient
 					MsgID, MsgSender, MsgSubject, MsgBody);
 			}
 		}
-		public SQLiteConnection sqliteCon;
+      //  public SQLiteConnection sqliteCon;
 
 		public EmailClient_form()
 		{
@@ -39,41 +42,8 @@ namespace EmailClient
 
 #region SQLConnection & DB creation           
   
-			//http://blog.tigrangasparian.com/2012/02/09/getting-started-with-sqlite-in-c-part-one/
-			string dbConnString = @"Data Source=db.sqlite; Version=3;"; // Creating the connection string with filepath to the DB
-			sqliteCon = new SQLiteConnection(dbConnString); // Creating new connection string instance.
-			try{
- 
-					sqliteCon.Open(); // Open database
-
-					
-						// Defining the SQL Create table string 
-						string crtMessagetblSQL = "CREATE TABLE IF NOT EXISTS [Messages] (" + 
-							"[msgID] TEXT NOT NULL PRIMARY KEY," + 
-							"[msgSender] TEXT NULL," +
-							"[msgSubject] TEXT NULL," + 
-							"[msgBody] TEXT NULL" +
-							")";
-
-						using (SQLiteTransaction sqlTrans = sqliteCon.BeginTransaction())
-						{
-							SQLiteCommand crtComm = new SQLiteCommand(crtMessagetblSQL, sqliteCon);
-
-							crtComm.ExecuteNonQuery();
-
-						 //   crtComm.Dispose();
-
-							sqlTrans.Commit(); // Commit changes into the DB
-						 } // End using
-
-					 sqliteCon.Close(); // Closes DB connection
-
-					} // End try
-
-					catch (SQLiteException e)
-					{
-						MessageBox.Show(e.ToString());
-					} // End catch
+            sqliteCon = sqlHandler.sqliteCon;
+            sqlHandler.CreateDB();
 
 #endregion
 
@@ -111,7 +81,7 @@ namespace EmailClient
 		{
 			SQLiteCommand cmdRead = new SQLiteCommand("SELECT * FROM Messages", sqliteCon);
 
-			sqliteCon.Open(); // Open database
+		    sqliteCon.Open(); // Open database
 			SQLiteDataReader reader = cmdRead.ExecuteReader();
 
 			subjectlsbx.Items.Clear();
