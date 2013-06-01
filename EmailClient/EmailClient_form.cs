@@ -23,7 +23,6 @@ namespace EmailClient
 		SQLiteConnection sqliteCon;
 
 
-	  //  public SQLiteConnection sqliteCon;
 
 		public EmailClient_form()
 		{
@@ -36,14 +35,14 @@ namespace EmailClient
 
 
 
-            subjectlsbx.Items.Clear();
-            dbmsg.Clear();
-            dbmsg = sqlHandler.listDbMsg();
+			subjectlsbx.Items.Clear();
+			dbmsg.Clear();
+			dbmsg = sqlHandler.listDbMsg();
 
-            foreach (Msg msg in dbmsg)
-            {
-                subjectlsbx.Items.Add(msg.MsgSubject);
-            }
+			foreach (Msg msg in dbmsg)
+			{
+				subjectlsbx.Items.Add(msg.MsgSubject);
+			}
 
 #endregion
 
@@ -56,28 +55,13 @@ namespace EmailClient
 			worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
 		} // EmailClient_form end
 	   
-		#region Menue Items
-		private void sendToolStripMenuItem1_Click(object sender, EventArgs e)
-		{
-		  
-		}
+#region Buttons & UI
 
-		private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
-
- 
-
-		private void newMailToolStripMenuItem_Click(object sender, EventArgs e)
+		private void NewMailbtn_Click(object sender, EventArgs e)
 		{
 			NewMail _NewMail = new NewMail();
 			_NewMail.ShowDialog();
 		}
-		#endregion
-
-
-	
 
 
 		private void ReciveMailbtn_Click_1(object sender, EventArgs e)
@@ -88,6 +72,12 @@ namespace EmailClient
 				pbxWorking.Visible = true;
 				worker.RunWorkerAsync();
 			}
+		}
+
+		private void Settingsbtn_Click(object sender, EventArgs e)
+		{
+			Settings_form _Settings_form = new Settings_form();
+			_Settings_form.ShowDialog();
 		}
 
 
@@ -105,6 +95,10 @@ namespace EmailClient
 			}
 		}
 
+#endregion
+
+
+
 
 		private static void fetchAllMessages(object sender, DoWorkEventArgs e)
 		{
@@ -116,7 +110,9 @@ namespace EmailClient
 				client.Connect("pop.gmail.com", 995, true);
 
 				// Authenticate ourselves towards the server /HejHej
-				client.Authenticate("dumdum13377", "Grus61mHg");
+				client.Authenticate(Properties.Settings.Default.UserName, Properties.Settings.Default.Password);
+
+				Settings_form
 								
 				// Get the number of messages in the inbox
 				int messageCount = client.GetMessageCount();
@@ -146,7 +142,7 @@ namespace EmailClient
 
 			msgcounglb.Text = Convert.ToString(list.Count);
 
-			#region Insert messages into db
+#region Insert messages into db
 
 			sqlHandler.InsertMsgInto(list);
 
@@ -160,13 +156,13 @@ namespace EmailClient
 				subjectlsbx.Items.Add(msg.MsgSubject);
 			}
 			
-			#endregion
+#endregion
 		}
 
 		private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
 			progressBar1.Value = e.ProgressPercentage;
 		}
-		
+
 	}
 }
