@@ -45,9 +45,9 @@
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(12, 527);
+            this.progressBar1.Location = new System.Drawing.Point(12, 514);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(827, 10);
+            this.progressBar1.Size = new System.Drawing.Size(761, 10);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 13;
             // 
@@ -69,7 +69,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.msgBodytbx.Location = new System.Drawing.Point(322, 40);
             this.msgBodytbx.Name = "msgBodytbx";
-            this.msgBodytbx.Size = new System.Drawing.Size(517, 435);
+            this.msgBodytbx.Size = new System.Drawing.Size(451, 422);
             this.msgBodytbx.TabIndex = 11;
             this.msgBodytbx.Text = "";
             // 
@@ -80,7 +80,7 @@
             this.subjectlsbx.FormattingEnabled = true;
             this.subjectlsbx.Location = new System.Drawing.Point(166, 40);
             this.subjectlsbx.Name = "subjectlsbx";
-            this.subjectlsbx.Size = new System.Drawing.Size(150, 433);
+            this.subjectlsbx.Size = new System.Drawing.Size(150, 420);
             this.subjectlsbx.TabIndex = 10;
             this.subjectlsbx.SelectedIndexChanged += new System.EventHandler(this.subjectlsbx_SelectedIndexChanged_1);
             // 
@@ -88,7 +88,7 @@
             // 
             this.msgcounglb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.msgcounglb.AutoSize = true;
-            this.msgcounglb.Location = new System.Drawing.Point(12, 502);
+            this.msgcounglb.Location = new System.Drawing.Point(12, 489);
             this.msgcounglb.Name = "msgcounglb";
             this.msgcounglb.Size = new System.Drawing.Size(27, 13);
             this.msgcounglb.TabIndex = 9;
@@ -131,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 537);
+            this.ClientSize = new System.Drawing.Size(785, 524);
             this.Controls.Add(this.Settingsbtn);
             this.Controls.Add(this.NewMailbtn);
             this.Controls.Add(this.progressBar1);

@@ -67,6 +67,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings_form.Designer.cs">
+      <DependentUpon>Settings_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlHandler.cs" />
     <EmbeddedResource Include="EmailClient_form.resx">
       <DependentUpon>EmailClient_form.cs</DependentUpon>
@@ -83,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Settings_form.resx">
+      <DependentUpon>Settings_form.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

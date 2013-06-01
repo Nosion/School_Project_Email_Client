@@ -53,7 +53,12 @@ namespace EmailClient
 			worker.DoWork += new DoWorkEventHandler(fetchAllMessages);
 			worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
 			worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
+			
+
+
+
 		} // EmailClient_form end
+
 	   
 #region Buttons & UI
 
@@ -112,8 +117,7 @@ namespace EmailClient
 				// Authenticate ourselves towards the server /HejHej
 				client.Authenticate(Properties.Settings.Default.UserName, Properties.Settings.Default.Password);
 
-				Settings_form
-								
+												
 				// Get the number of messages in the inbox
 				int messageCount = client.GetMessageCount();
 
@@ -132,6 +136,7 @@ namespace EmailClient
 				}
 				// Now return the fetched messages to e
 				e.Result = allMessages;
+				client.Disconnect();
 			}
 		}
 
