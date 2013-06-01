@@ -58,6 +58,7 @@
     <Compile Include="EmailClient_form.Designer.cs">
       <DependentUpon>EmailClient_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Msg.cs" />
     <Compile Include="NewMail.cs">
       <SubType>Form</SubType>
     </Compile>

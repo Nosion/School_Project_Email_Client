@@ -19,22 +19,11 @@ namespace EmailClient
 	{
 		List<OpenPop.Mime.Message> list;
 		List<Msg> dbmsg = new List<Msg>();
-        SqlHandler sqlHandler = new SqlHandler();
-        SQLiteConnection sqliteCon;
+		SqlHandler sqlHandler = new SqlHandler();
+		SQLiteConnection sqliteCon;
 
-		public class Msg
-		{
-			public string MsgID { get; set; }
-			public string MsgSender { get; set; }
-			public string MsgSubject { get; set; }
-			public string MsgBody { get; set; }
-			public override string ToString()
-			{
-				return string.Format("MsgID: {0}, MsgSender: {1}, MsgSubject: {2}, MsgBody: {3}",
-					MsgID, MsgSender, MsgSubject, MsgBody);
-			}
-		}
-      //  public SQLiteConnection sqliteCon;
+
+	  //  public SQLiteConnection sqliteCon;
 
 		public EmailClient_form()
 		{
@@ -42,8 +31,19 @@ namespace EmailClient
 
 #region SQLConnection & DB creation           
   
-            sqliteCon = sqlHandler.sqliteCon;
-            sqlHandler.CreateDB();
+			sqliteCon = sqlHandler.sqliteCon;
+			sqlHandler.CreateDB();
+
+
+
+            subjectlsbx.Items.Clear();
+            dbmsg.Clear();
+            dbmsg = sqlHandler.listDbMsg();
+
+            foreach (Msg msg in dbmsg)
+            {
+                subjectlsbx.Items.Add(msg.MsgSubject);
+            }
 
 #endregion
 
@@ -77,36 +77,7 @@ namespace EmailClient
 		#endregion
 
 
-		private void listInsert()
-		{
-			SQLiteCommand cmdRead = new SQLiteCommand("SELECT * FROM Messages", sqliteCon);
-
-		    sqliteCon.Open(); // Open database
-			SQLiteDataReader reader = cmdRead.ExecuteReader();
-
-			subjectlsbx.Items.Clear();
-			dbmsg.Clear();
-			try
-			{
-				while (reader.Read())
-				{
-					string msgID = reader.GetString(0);
-					string msgSender = reader.GetString(1);
-					string msgSubject = reader.GetString(2);
-					string msgBody = reader.GetString(3);
-					dbmsg.Add(new Msg() { MsgID = msgID, MsgSender = msgSender, MsgSubject = msgSubject, MsgBody = msgBody });
-				}
-			}
-			finally
-			{
-				foreach (Msg msg in dbmsg)
-				{
-					subjectlsbx.Items.Add(msg.MsgSubject);
-				}
-				reader.Close(); // Close connection
-			}
-			sqliteCon.Close();
-		}
+	
 
 
 		private void ReciveMailbtn_Click_1(object sender, EventArgs e)
@@ -127,21 +98,11 @@ namespace EmailClient
 			try
 			{
 				msgBodytbx.Text = dbmsg[selectedItem].MsgBody; // Shows the message body when choosing a subject from subjectlsbx
-
 			}
 			catch (Exception ex)
 			{
-
 				Debug.WriteLine(ex.Message);
-			}            /*if (!list.ToArray()[selectedItem].MessagePart.IsMultiPart)
-			{
-				msgBodytbx.Text = list[selectedItem].MessagePart.GetBodyAsText();
 			}
-			else
-			{
-				OpenPop.Mime.MessagePart plainText = list[selectedItem].FindFirstPlainTextVersion();
-				msgBodytbx.Text = plainText.GetBodyAsText();
-			}*/
 		}
 
 
@@ -187,46 +148,18 @@ namespace EmailClient
 
 			#region Insert messages into db
 
-			string dbConnString = @"Data Source=db.sqlite; Version=3;"; // Creating the connection string with filepath to the DB
-			SQLiteConnection sqliteCon = new SQLiteConnection(dbConnString); // Creating new connection string instance.
-			sqliteCon.Open(); // Open database
+			sqlHandler.InsertMsgInto(list);
 
-			SQLiteTransaction sqlTrans;
 
-			SQLiteCommand comInsert = new SQLiteCommand("INSERT OR IGNORE INTO messages (msgID, msgSender, msgSubject, msgBody) VALUES (@msgID, @msgSender, @msgSubject, @msgBody)", sqliteCon);
-
-			foreach (OpenPop.Mime.Message message in list)
+			subjectlsbx.Items.Clear();
+			dbmsg.Clear();
+			dbmsg = sqlHandler.listDbMsg();
+			
+			foreach (Msg msg in dbmsg)
 			{
-				if (message.Headers.MessageId != null)
-				{
-					comInsert.Parameters.AddWithValue("@msgID", message.Headers.MessageId);
-					comInsert.Parameters.AddWithValue("@msgSender", message.Headers.From.Address);
-					comInsert.Parameters.AddWithValue("@msgSubject", message.Headers.Subject);
-					if (!message.MessagePart.IsMultiPart)
-					{
-						comInsert.Parameters.AddWithValue("@msgBody", message.MessagePart.GetBodyAsText());
-					}
-					else
-					{
-						OpenPop.Mime.MessagePart plaintext = message.FindFirstPlainTextVersion();
-						comInsert.Parameters.AddWithValue("@msgBody", plaintext.GetBodyAsText());
-					}
-
-					sqlTrans = sqliteCon.BeginTransaction();
-					int result = comInsert.ExecuteNonQuery();
-
-					sqlTrans.Commit(); // Commit changes into the DB
-
-				} // End if
-
-			} // End foreach
-
-			comInsert.Dispose();
-
-			sqliteCon.Close();
-
-			listInsert();
-
+				subjectlsbx.Items.Add(msg.MsgSubject);
+			}
+			
 			#endregion
 		}
 
