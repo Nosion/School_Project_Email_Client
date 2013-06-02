@@ -74,6 +74,9 @@
       <DependentUpon>Settings_form.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlHandler.cs" />
+    <EmbeddedResource Include="EmailClient_form.da.resx">
+      <DependentUpon>EmailClient_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmailClient_form.resx">
       <DependentUpon>EmailClient_form.cs</DependentUpon>
     </EmbeddedResource>

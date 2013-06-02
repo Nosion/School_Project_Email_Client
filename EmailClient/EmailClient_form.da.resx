@@ -117,33 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="progressBar1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 591</value>
-  </data>
-  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>889, 10</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
-    <value>progressBar1</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="pbxWorking.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhIAAgAPUAAP///4iIiNbW1sXFxbS0tKurq6SkpKmpqa+vr7y8vMnJydLS0re3t6CgoJ+fn6Ki
@@ -295,114 +269,6 @@
         dEUlCwsUDOCQdasFE1yCAAA7AAAAAAAAAAAA
 </value>
   </data>
-  <data name="pbxWorking.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="pbxWorking.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 21</value>
-  </data>
-  <data name="pbxWorking.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="pbxWorking.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="pbxWorking.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pbxWorking.Name" xml:space="preserve">
-    <value>pbxWorking</value>
-  </data>
-  <data name="&gt;&gt;pbxWorking.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pbxWorking.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pbxWorking.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="msgBodytbx.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="msgBodytbx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>322, 40</value>
-  </data>
-  <data name="msgBodytbx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>579, 499</value>
-  </data>
-  <data name="msgBodytbx.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="msgBodytbx.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;msgBodytbx.Name" xml:space="preserve">
-    <value>msgBodytbx</value>
-  </data>
-  <data name="&gt;&gt;msgBodytbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;msgBodytbx.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;msgBodytbx.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="subjectlsbx.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
-  <data name="subjectlsbx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 40</value>
-  </data>
-  <data name="subjectlsbx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 498</value>
-  </data>
-  <data name="subjectlsbx.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;subjectlsbx.Name" xml:space="preserve">
-    <value>subjectlsbx</value>
-  </data>
-  <data name="&gt;&gt;subjectlsbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;subjectlsbx.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;subjectlsbx.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="msgcounglb.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="msgcounglb.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="msgcounglb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 566</value>
-  </data>
-  <data name="msgcounglb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
-  </data>
-  <data name="msgcounglb.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="msgcounglb.Text" xml:space="preserve">
-    <value>N/A</value>
-  </data>
-  <data name="&gt;&gt;msgcounglb.Name" xml:space="preserve">
-    <value>msgcounglb</value>
-  </data>
-  <data name="&gt;&gt;msgcounglb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;msgcounglb.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;msgcounglb.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="ReciveMailbtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -427,33 +293,6 @@
         X18h7pNCQsLfUMH1eG/+2nsAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="ReciveMailbtn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="ReciveMailbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 1</value>
-  </data>
-  <data name="ReciveMailbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="ReciveMailbtn.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;ReciveMailbtn.Name" xml:space="preserve">
-    <value>ReciveMailbtn</value>
-  </data>
-  <data name="&gt;&gt;ReciveMailbtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ReciveMailbtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ReciveMailbtn.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <metadata name="worker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>15, 20</value>
-  </metadata>
   <data name="NewMailbtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
@@ -477,37 +316,10 @@
         IigC4jfaEUk2YZNTTAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="NewMailbtn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="NewMailbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 1</value>
-  </data>
-  <data name="NewMailbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="NewMailbtn.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;NewMailbtn.Name" xml:space="preserve">
-    <value>NewMailbtn</value>
-  </data>
-  <data name="&gt;&gt;NewMailbtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NewMailbtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;NewMailbtn.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="Settingsbtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
   <data name="Settingsbtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8
+        YQUAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8
         AAAHB0lEQVRYR7VXa1Nb1xX1P8gf6Pe2Hzrpx3bamX5pM03bqRs77TSOExzHidOUum0y7bSTTvu5k+DU
         dgwGbJB5CGGBeEgISSCEhJAQEgihF3oi9AIMGL/wMzOr6xzulcESdjJ1z8wa6Z6771lr77P3Pvce+rrj
         G9/5bh2BA3BYMfv/DZK0P0W6F+2K2f8+uNjLxI+Uy8rg3LYg0w2PYHXrJkob2+geGFYFbCtmlSHWIF5W
@@ -541,65 +353,8 @@
         Dv0Xo5NAeyZulv8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="Settingsbtn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="Settingsbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>869, 2</value>
-  </data>
-  <data name="Settingsbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="Settingsbtn.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;Settingsbtn.Name" xml:space="preserve">
-    <value>Settingsbtn</value>
-  </data>
-  <data name="&gt;&gt;Settingsbtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Settingsbtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Settingsbtn.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 84</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>Click Me</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>47</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>913, 601</value>
+    <value>Klik Mig</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -8252,20 +8007,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//wAAgAEAAAAA
         AAA//AAAHngAAAgQAABhhgAAY8YAAA/wAAAf+AAAP/wAAAAAAACAAQAA//8AAP//AAA0NTg4NzA=
 </value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Ema!l Client</value>
-  </data>
-  <data name="&gt;&gt;worker.Name" xml:space="preserve">
-    <value>worker</value>
-  </data>
-  <data name="&gt;&gt;worker.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>EmailClient_form</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

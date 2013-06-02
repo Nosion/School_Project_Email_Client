@@ -53,7 +53,18 @@ namespace EmailClient
 			worker.DoWork += new DoWorkEventHandler(fetchAllMessages);
 			worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
 			worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
-			
+
+
+			ToolTip toolTip1 = new ToolTip();
+
+			toolTip1.AutoPopDelay = 6000;
+			toolTip1.ShowAlways = true;
+			toolTip1.InitialDelay = 1000;
+			toolTip1.ReshowDelay = 500;
+
+			toolTip1.SetToolTip(this.ReciveMailbtn, "Refresh");
+			toolTip1.SetToolTip(this.NewMailbtn, "New mail");
+			toolTip1.SetToolTip(this.Settingsbtn, "Settings");
 
 
 
