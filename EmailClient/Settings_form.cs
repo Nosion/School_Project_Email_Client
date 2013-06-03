@@ -27,6 +27,7 @@ namespace EmailClient
             {
                 lbCurrentUsr.Text = "No Current user is saved.";
             }
+            lbCurrentUsr.Update();
         }
 
 
@@ -35,15 +36,20 @@ namespace EmailClient
 
             Properties.Settings.Default.UserName = textBox1.Text.ToString();
             Properties.Settings.Default.Password = textBox2.Text.ToString();
-            
 
+            lbAuth.Text = "";
+            pbxAuthOk.Visible = false;
+            pbxAuthFail.Visible = false;
+                    
 
             try
             {
                 using (Pop3Client client = new Pop3Client())
                 {
+                    
+
                     // Connect to the server  pop.myopera.com
-                    client.Connect("pop.gmail.com", 995, true);
+                    client.Connect("pop.myopera.com", 995, true);
 
                     // Authenticate ourselves towards the server /HejHej
                     client.Authenticate(Properties.Settings.Default.UserName, Properties.Settings.Default.Password);
@@ -61,14 +67,21 @@ namespace EmailClient
             catch (Exception)
             {
                 pbxAuthFail.Visible = true;
-                lbAuth.Text = "Something is wrong! \nMaybe wrong username or password..";
+                lbAuth.Text = "Something's wrong! \nMaybe bad username or password..";
+                Properties.Settings.Default.UserName = null;
+                Properties.Settings.Default.Save();
+
+               if (Properties.Settings.Default.UserName != null)
+                {
+
+                    lbCurrentUsr.Text = Properties.Settings.Default.UserName;
+                }
+                else
+                {
+                    lbCurrentUsr.Text = "No Current user is saved.";
+                }
             }
-
         }
-
-        ComboBox.
-
-      
 
 
 

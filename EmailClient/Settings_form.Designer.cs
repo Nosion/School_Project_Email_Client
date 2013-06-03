@@ -40,12 +40,9 @@
             this.pbxAuthFail = new System.Windows.Forms.PictureBox();
             this.lbCurrentUsr = new System.Windows.Forms.Label();
             this.lbCurrent = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cmbobxChooseLang = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAuthOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAuthFail)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -102,24 +99,10 @@
             resources.ApplyResources(this.lbCurrent, "lbCurrent");
             this.lbCurrent.Name = "lbCurrent";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cmbobxChooseLang);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // cmbobxChooseLang
-            // 
-            this.cmbobxChooseLang.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbobxChooseLang, "cmbobxChooseLang");
-            this.cmbobxChooseLang.Name = "cmbobxChooseLang";
-            // 
             // Settings_form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbCurrent);
             this.Controls.Add(this.lbCurrentUsr);
             this.Controls.Add(this.pbxAuthFail);
@@ -133,7 +116,6 @@
             this.Name = "Settings_form";
             ((System.ComponentModel.ISupportInitialize)(this.pbxAuthOk)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAuthFail)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,8 +133,6 @@
         private System.Windows.Forms.PictureBox pbxAuthFail;
         private System.Windows.Forms.Label lbCurrentUsr;
         private System.Windows.Forms.Label lbCurrent;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ComboBox cmbobxChooseLang;
     }
 }
