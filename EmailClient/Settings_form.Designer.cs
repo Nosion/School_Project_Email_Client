@@ -41,6 +41,7 @@
             this.lbCurrentUsr = new System.Windows.Forms.Label();
             this.lbCurrent = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAuthOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAuthFail)).BeginInit();
             this.SuspendLayout();
@@ -99,10 +100,19 @@
             resources.ApplyResources(this.lbCurrent, "lbCurrent");
             this.lbCurrent.Name = "lbCurrent";
             // 
+            // btnClose
+            // 
+            resources.ApplyResources(this.btnClose, "btnClose");
+            this.btnClose.Name = "btnClose";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // Settings_form
             // 
+            this.AcceptButton = this.button1;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lbCurrent);
             this.Controls.Add(this.lbCurrentUsr);
             this.Controls.Add(this.pbxAuthFail);
@@ -134,5 +144,6 @@
         private System.Windows.Forms.Label lbCurrentUsr;
         private System.Windows.Forms.Label lbCurrent;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnClose;
     }
 }

@@ -22,11 +22,13 @@ namespace EmailClient
 		SqlHandler sqlHandler = new SqlHandler();
 		SQLiteConnection sqliteCon;
 
-
+		   
 
 		public EmailClient_form()
 		{
 			InitializeComponent();
+
+			subjectlsbx.Items.Clear();
 
 #region SQLConnection & DB creation           
   
@@ -47,12 +49,14 @@ namespace EmailClient
 #endregion
 
 			list = new List<OpenPop.Mime.Message>();
-
-			worker.WorkerReportsProgress = true;
 			
+			worker.WorkerReportsProgress = true;
+			worker.WorkerSupportsCancellation = true;
 			worker.DoWork += new DoWorkEventHandler(fetchAllMessages);
 			worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
 			worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(OnRunWorkerCompleted);
+			
+
 
 
 			ToolTip toolTip1 = new ToolTip();
@@ -66,7 +70,7 @@ namespace EmailClient
 			toolTip1.SetToolTip(this.NewMailbtn, "New mail");
 			toolTip1.SetToolTip(this.Settingsbtn, "Settings");
 
-
+			
 
 		} // EmailClient_form end
 
@@ -113,22 +117,22 @@ namespace EmailClient
 
 #endregion
 
-
-
-
+		// Run by Worker, gets messages into a list.
 		private static void fetchAllMessages(object sender, DoWorkEventArgs e)
 		{
+			try
+			{
 			int percentComplete;
 			// The client disconnects from the server when being disposed
 			using (Pop3Client client = new Pop3Client())
 			{
 				// Connect to the server  pop.myopera.com
-				client.Connect("pop.gmail.com", 995, true);
+				client.Connect("pop.myopera.com", 995, true);
 
 				// Authenticate ourselves towards the server /HejHej
 				client.Authenticate(Properties.Settings.Default.UserName, Properties.Settings.Default.Password);
 
-												
+
 				// Get the number of messages in the inbox
 				int messageCount = client.GetMessageCount();
 
@@ -149,14 +153,26 @@ namespace EmailClient
 				e.Result = allMessages;
 				client.Disconnect();
 			}
+			}
+			catch (Exception ex)
+			{
+
+				MessageBox.Show("Connection Failed, maybe you forgot to set a user in Settings?" + ex.Message);
+			}
 		}
 
 		private void OnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			pbxWorking.Visible = false;
 			list = (List<OpenPop.Mime.Message>)e.Result;
-
-			msgcounglb.Text = Convert.ToString(list.Count);
+			try
+			{
+				msgcounglb.Text = Convert.ToString(list.Count);
+			}
+			catch (Exception)
+			{
+				return;
+			}
 
 #region Insert messages into db
 
